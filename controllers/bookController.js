@@ -33,7 +33,7 @@ exports.index = async (req, res) => {
 			data: results,
 		});
 	} catch (err) {
-		console.log(err.message);
+		next(err);
 	}
 };
 
