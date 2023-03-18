@@ -8,6 +8,7 @@ const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 const catalogRouter = require("./routes/catalog"); //Import routes for "catalog" area of site
 const compression = require("compression");
+const helmet = require("helmet");
 
 const app = express();
 
@@ -19,6 +20,7 @@ connectToMongoDB().catch((err) => console.log(err));
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
 
+app.use(helmet());
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
